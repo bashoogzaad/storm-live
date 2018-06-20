@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { TimerProvider } from '../providers/timer/timer';
+import { NarrowcastingProvider } from '../providers/narrowcasting/narrowcasting';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { TimerProvider } from '../providers/timer/timer';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -23,7 +26,8 @@ import { TimerProvider } from '../providers/timer/timer';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TimerProvider
+    TimerProvider,
+    NarrowcastingProvider
   ]
 })
 export class AppModule {}

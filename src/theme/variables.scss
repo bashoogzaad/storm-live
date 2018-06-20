@@ -22,7 +22,10 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+h1 {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 4.0rem !important;
+}
 
 
 // Named Color Variables
@@ -91,3 +94,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
