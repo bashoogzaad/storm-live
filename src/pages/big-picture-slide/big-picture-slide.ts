@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the BigPictureSlidePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-big-picture-slide',
@@ -15,11 +8,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BigPictureSlidePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public slideUrl: string;
+  
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BigPictureSlidePage');
+    let slideNumber = this.getRandomInt(1, 3);
+    this.slideUrl = 'https://storage.googleapis.com/kiba-fashion-api-bucket/image/banner/banner'+slideNumber+'.jpg';
+  }
+  
+  public getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
 }

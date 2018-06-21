@@ -9,6 +9,7 @@ page-outfit {
 	}
 	
 	.outfit-container > * {
+		flex: 50%;
 	}
 	
 	.outfit-image {
@@ -17,7 +18,11 @@ page-outfit {
 	}
 	
 	.title {
-		margin-bottom: 60px; 
+		margin-top: 0px;
+		padding: 5px;
+		margin-bottom: 60px;
+		background-color: color($colors, secondary);
+		color: white;
 	}
 	
 }

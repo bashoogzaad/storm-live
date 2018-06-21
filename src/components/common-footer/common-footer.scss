@@ -25,4 +25,16 @@ common-footer {
 		background-color: color($colors, primary);
 	}
 	
+	.logo-container {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 5px;
+	}
+	
+	.logo-container > img {
+		width: 8vw;
+		height: auto;
+	}
+	
 }
