@@ -1,0 +1,13 @@
+<ion-content>
+	
+	<div class="imgs-container">
+	
+		<div *ngFor="let outfit of outfits" [ngStyle]="{'background-image': 'url(' + outfit.main_media_url + ')'}"></div>
+	
+	</div>
+	
+</ion-content>
+
+<ion-footer>
+	<common-footer text="This week's fashion"></common-footer>
+</ion-footer>

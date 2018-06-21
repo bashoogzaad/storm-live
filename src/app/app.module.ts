@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { TimerProvider } from '../providers/timer/timer';
 import { NarrowcastingProvider } from '../providers/narrowcasting/narrowcasting';
 import { HttpClientModule } from "@angular/common/http";
+import { YoutubeProvider } from '../providers/youtube/youtube';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from "@angular/common/http";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TimerProvider,
-    NarrowcastingProvider
+    NarrowcastingProvider,
+    YoutubeProvider
   ]
 })
 export class AppModule {}

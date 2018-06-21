@@ -21,14 +21,14 @@ export class OutfitPage {
   }
 
   ionViewDidLoad() {
+      
       this.narrowcastingProvider.getRandomOutfit().subscribe(r => {
-          
           this.outfit = r;
           this.narrowcastingProvider.getProducts(r['id']).subscribe(products => {
               this.products = products;
           });
-          
       });
+      
   }
   
   public getSizes(product) {

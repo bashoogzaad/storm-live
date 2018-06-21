@@ -13,16 +13,45 @@ page-outfit {
 	}
 	
 	.outfit-image {
-		height: 89vh;
-		width: auto; 
+		height: 100%;
+		width: 100%;
+		background-size: cover; 
 	}
 	
 	.title {
 		margin-top: 0px;
 		padding: 5px;
-		margin-bottom: 60px;
 		background-color: color($colors, secondary);
 		color: white;
+	}
+	
+	.title h1 {
+		font-size: 2.3vw !important;
+	}
+	
+	.outfit-description {
+		padding: 25px;
+		font-size: 1.0vw !important;
+		text-align: justify;
+	}
+	
+	.product-container {
+		font-size: 1.5vw;
+	}
+	
+	.product-container p {
+		font-size: 1.0vw !important;
+	}
+	
+	.button-price {
+		width: 6vw;
+		height: 6vw;
+		font-size: 1.2vw;
+	}
+	
+	.ava img {
+		width: 6vw;
+		height: 6vw;
 	}
 	
 }

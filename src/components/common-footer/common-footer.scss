@@ -23,6 +23,9 @@ common-footer {
 	.footer-container {
 		height: 10vh;
 		background-color: color($colors, primary);
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 	}
 	
 	.logo-container {
@@ -35,6 +38,19 @@ common-footer {
 	.logo-container > img {
 		width: 8vw;
 		height: auto;
+	}
+	
+	.slide-title {
+		margin-right: 0px;
+		padding: 0px;
+	}
+	
+	.slide-title h1 {
+		padding: 10px;
+		font-size: 1.3vw !important;
+		color: white;
+		background-color: color($colors, secondary);
+		text-transform: uppercase;
 	}
 	
 }

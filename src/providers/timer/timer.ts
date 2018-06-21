@@ -8,6 +8,8 @@ import { NavController, App } from "ionic-angular";
 @Injectable()
 export class TimerProvider {
 
+  private seconds = 15;
+    
   private slides: string[];
     
   private currentStep: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -21,8 +23,10 @@ export class TimerProvider {
   ) {
     
     this.slides = [
+       'OutfitPage',
        'BigPictureSlidePage',
-       'OutfitPage'
+       'ThisWeeksFashionPage',
+       'YtVideoPage'
     ];
       
   }
@@ -31,8 +35,8 @@ export class TimerProvider {
     
     this.subscription = this.timer.subscribe(ticks => {
       
-      if (ticks <= 1000) {
-        this.currentStep.next(ticks/10);
+      if (ticks <= 100*this.seconds) {
+        this.currentStep.next(ticks/this.seconds);
       } else {
         this.reset();
       }
@@ -61,12 +65,20 @@ export class TimerProvider {
         
     }
     
+    this.seconds = 15;
     this.start();
     
   }
   
   public getCurrentStep() {
     return this.currentStep;
+  }
+  
+  public setSeconds(num) {
+      this.seconds = num;
+      this.subscription.unsubscribe();
+      this.start();
+      
   }
 
 }
