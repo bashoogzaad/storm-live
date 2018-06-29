@@ -2,7 +2,14 @@
 	
 	<div class="imgs-container">
 	
-		<div *ngFor="let outfit of outfits" [ngStyle]="{'background-image': 'url(' + outfit.main_media_url + ')'}"></div>
+		<div *ngFor="let outfit of outfits" [ngStyle]="{'background-image': 'url(' + outfit.main_media_url + ')'}" class="contain">
+			
+			<div text-right class="outfit-title">
+				<div *ngIf="outfit.timestamp_online > currentDate">Vanaf {{ outfit.timestamp_online | date:'EEEE' }}</div>
+				<div *ngIf="outfit.timestamp_online <= currentDate">Nu te koop</div>
+			</div>
+		
+		</div>
 	
 	</div>
 	

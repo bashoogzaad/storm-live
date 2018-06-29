@@ -7,9 +7,29 @@ page-this-weeks-fashion {
 	}
 	
 	.imgs-container > * {
-		flex: 20%;
+		flex: 25%;
 		background-size: cover;
 		background-position: center;
+		border-top: 40px solid white;
+		border-bottom: 40px solid white;
+		border-left: 10px solid white;
+		border-right: 10px solid white;
+	}
+	
+	.contain {
+		position: relative;
+	}
+	
+	.outfit-title {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background-color: color($colors, primary);
+		color: color($colors, secondary);
+		margin-bottom: 10px;
+		font-family: 'Quicksand', sans-serif;
+		padding: 10px;
+		font-size: 1.3vw;
 	}
 
 }

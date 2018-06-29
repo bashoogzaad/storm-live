@@ -53,5 +53,9 @@ export class OutfitPage {
       return lbl;
       
   }
+  
+  public getOutfitImage(id, count) {
+      return 'https://storage.googleapis.com/kiba-fashion-api-bucket/image/outfit/'+id+'-'+count+'.jpg';
+  }
 
 }

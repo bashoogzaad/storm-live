@@ -10,6 +10,9 @@ import { NarrowcastingProvider } from "../../providers/narrowcasting/narrowcasti
 export class ThisWeeksFashionPage {
     
   public outfits: any;
+  public currentDate;
+  
+  public offsets = [0, 4, 8];
     
   constructor(
       public navCtrl: NavController,
@@ -20,9 +23,14 @@ export class ThisWeeksFashionPage {
   }
 
   ionViewDidLoad() {
-      this.narrowcastingProvider.getThisWeeksFashion().subscribe(r => {
-          this.outfits = r;
+      
+      this.currentDate = new Date();
+      
+      let offset = this.offsets[Math.floor(Math.random()*this.offsets.length)];
+      this.narrowcastingProvider.getThisWeeksFashion('MUSTHAVES', offset).subscribe((r: Array<any>) => {
+          this.outfits = r.reverse();
       });
+      
   }
 
 }

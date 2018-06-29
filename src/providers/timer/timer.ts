@@ -10,33 +10,47 @@ export class TimerProvider {
 
   private seconds = 15;
     
-  private slides: string[];
+  private slides: any[];
     
   private currentStep: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  private timer = Observable.interval(10);
   private subscription: Subscription;
   
-  private currentPage: string = undefined;
+  private currentPage: any = undefined;
   
   constructor(
       protected app: App
   ) {
     
     this.slides = [
-       'OutfitPage',
-       'BigPictureSlidePage',
-       'ThisWeeksFashionPage',
-       'YtVideoPage'
+       {
+           name: 'OutfitPage',
+           duration: 15,
+       },
+       {
+           name: 'BigPictureSlidePage',
+           duration: 15,
+       },
+       {
+           name: 'ThisWeeksFashionPage',
+           duration: 15,
+       },
+       {
+           name: 'YtVideoPage',
+           duration: 100,
+       }
     ];
       
   }
   
   public start() {
     
-    this.subscription = this.timer.subscribe(ticks => {
+    let interval = 100;
+    let multiplier = 1000/interval;
+    let timer = Observable.interval(interval);
+    this.subscription = timer.subscribe(ticks => {
       
-      if (ticks <= 100*this.seconds) {
-        this.currentStep.next(ticks/this.seconds);
+      if (ticks <= this.seconds*multiplier) {
+        this.currentStep.next((ticks/(this.seconds*multiplier))*100);
       } else {
         this.reset();
       }
@@ -52,20 +66,20 @@ export class TimerProvider {
     let nav = this.app.getRootNav();
     if (this.currentPage) {
         
-        let slidesToChoose = this.slides.filter((i, k) => i !== this.currentPage);
+        let slidesToChoose = this.slides.filter((i, k) => i.name !== this.currentPage.name);
         let page = slidesToChoose[Math.floor(Math.random()*slidesToChoose.length)];
-        nav.push(page, {}, {animate:false});
+        nav.push(page.name, {}, { animate:false });
         this.currentPage = page;
         
     } else {
         
         let page = this.slides[Math.floor(Math.random()*this.slides.length)];
-        nav.push(page, {}, {animate:false});
+        nav.push(page.name, {}, { animate:false });
         this.currentPage = page;
         
     }
     
-    this.seconds = 15;
+    this.seconds = this.currentPage.duration;
     this.start();
     
   }

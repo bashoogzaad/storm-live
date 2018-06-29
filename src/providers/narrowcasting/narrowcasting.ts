@@ -18,8 +18,8 @@ export class NarrowcastingProvider {
       return this.http.get(this.baseUrl+'webapp/product/get?outfit_id='+outfitId+'&get_size=1&get_product_variant=1&get_stock=1');
   }
   
-  public getThisWeeksFashion() {
-      return this.http.get(this.baseUrl+'narrowcasting/get_latest_outfits');
+  public getThisWeeksFashion(type, offset) {
+      return this.http.get(this.baseUrl+'narrowcasting/get_latest_outfits?type='+type+'&offset='+offset);
   }
   
 }

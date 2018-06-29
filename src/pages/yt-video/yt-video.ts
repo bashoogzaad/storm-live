@@ -4,13 +4,6 @@ import { YoutubeProvider } from "../../providers/youtube/youtube";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { TimerProvider } from "../../providers/timer/timer";
 
-/**
- * Generated class for the YtVideoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-yt-video',
@@ -19,6 +12,7 @@ import { TimerProvider } from "../../providers/timer/timer";
 export class YtVideoPage {
 
   public trustedVideoUrl: SafeResourceUrl;
+  public videoTitle;
     
   constructor(
       public navCtrl: NavController,
@@ -31,23 +25,25 @@ export class YtVideoPage {
   }
 
   ionViewDidLoad() {
+      
     this.youtubeProvider.getYoutubeVideos().subscribe(r => {
         
         let items = r['items'];
         let randomItem = items[Math.floor(Math.random()*items.length)];
-        console.log(randomItem);
         
         let videoId = randomItem.snippet.resourceId.videoId;
-        let url = 'https://www.youtube.com/embed/'+videoId+'?autoplay=1&mute=0&showinfo=0&controls=0&iv_load_policy=3&rel=0';
+        let url = 'https://www.youtube.com/embed/'+videoId+'?autoplay=1&mute=1&showinfo=0&controls=0&iv_load_policy=3&rel=0';
+        
+        this.videoTitle = randomItem.snippet.title;
         
         this.youtubeProvider.getVideoDuration(videoId).subscribe(details => {
-            console.log(details);
             let duration = this.parseDuration(details['items'][0].contentDetails.duration);
             this.timer.setSeconds(duration);
             this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
         });
         
-    })
+    });
+    
   }
   
   public parseDuration(ytTime) {

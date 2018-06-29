@@ -2,38 +2,57 @@
 	
 	<div class="outfit-container" *ngIf="outfit && products">
 		
-		<div class="outfit-image" [ngStyle]="{'background-image': 'url(' + outfit.main_media_url + ')'}"></div>
+<!-- 		<div> -->
 		
-		<div>
+<!-- 			<ion-item no-lines> -->
+<!-- 				<p class="outfit-description" text-wrap> -->
+<!-- 					{{ outfit.description }} -->
+<!-- 				</p> -->
+<!-- 				<ion-avatar item-end class="ava"> -->
+<!-- 					<img src="https://storage.googleapis.com/kiba-fashion-api-bucket/image/employee/3.jpg" /> -->
+<!-- 				</ion-avatar> -->
+<!-- 			</ion-item> -->
 			
-			<div class="title"> 
-				<h1 text-wrap text-center>{{ outfit.name }}</h1>
-			</div>
+<!-- 			<ion-list> -->
 			
-			<ion-item no-lines>
-				<p class="outfit-description" text-wrap>
-					{{ outfit.description }}
-				</p>
-				<ion-avatar item-end class="ava">
-					<img src="https://storage.googleapis.com/kiba-fashion-api-bucket/image/employee/3.jpg" />
-				</ion-avatar>
-			</ion-item>
-			
-			<ion-list>
-			
-				<ion-item icon-left no-lines class="section-header">
-					Producten
-				</ion-item>
-				<ion-item *ngFor="let product of products" class="product-container">
-					<div text-wrap>{{ product.name.replace('Dameskleding', '') }}</div>
-					<p text-wrap>Verkrijgbaar in: {{ getSizes(product) }}</p>
-				    <p>#{{ product.id }}</p>
-					<button ion-fab color="tertiary" item-end class="button-price">{{ product.unit_price | currency:'EUR':'symbol' }}</button>
-				</ion-item>
+<!-- 				<ion-item icon-left no-lines class="section-header"> -->
+<!-- 					Producten -->
+<!-- 				</ion-item> -->
+<!-- 				<ion-item *ngFor="let product of products" class="product-container"> -->
+<!-- 					<div text-wrap>{{ product.name.replace('Dameskleding', '') }}</div> -->
+<!-- 					<p text-wrap>Verkrijgbaar in: {{ getSizes(product) }}</p> -->
+<!-- 				    <p>#{{ product.id }}</p> -->
+<!-- 					<button ion-fab color="tertiary" item-end class="button-price">{{ product.unit_price | currency:'EUR':'symbol' }}</button> -->
+<!-- 				</ion-item> -->
 					
-			</ion-list>
+<!-- 			</ion-list> -->
+		
+<!-- 		</div> -->
+		
+		<div class="outfit-title">
+			{{ outfit.name }}
+			<div class="products-title">
+				<div *ngFor="let product of products">
+					<div text-wrap>{{ product.name.replace('Dameskleding', '') }} - {{ product.unit_price | currency:'EUR':'symbol' }}</div>
+				</div>
+			</div>
 		</div>
+		
+		<div class="middle-container">
+		
+			<div class="outfit-image" [ngStyle]="{'background-image': 'url(' + getOutfitImage(outfit.id, 1) + ')'}"></div>
+			<div class="outfit-image" [ngStyle]="{'background-image': 'url(' + outfit.main_media_url + ')'}"></div>
+			<div class="outfit-image" [ngStyle]="{'background-image': 'url(' + getOutfitImage(outfit.id, 2) + ')'}"></div>
 			
+<!-- 			<div class="products-title"> -->
+<!-- 				<div *ngFor="let product of products"> -->
+<!-- 					<div text-wrap>{{ product.name.replace('Dameskleding', '') }} - {{ product.unit_price | currency:'EUR':'symbol' }}</div> -->
+<!-- <!-- 					<button ion-fab color="tertiary" item-end class="button-price">{{ product.unit_price | currency:'EUR':'symbol' }}</button> --> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			
+		</div>
+		
 	</div>
 	
 </ion-content>

@@ -1,7 +1,10 @@
 <ion-content>
-	<ng-container *ngIf="trustedVideoUrl">
+	<div class="outfit-title">
+		{{ videoTitle }}
+	</div>
+	<div *ngIf="trustedVideoUrl" class="container">
 		<iframe width="100%" height="100%" [src]="trustedVideoUrl" frameborder="0" allowfullscreen></iframe>
-	</ng-container>
+	</div>
 </ion-content>
 
 <ion-footer>
