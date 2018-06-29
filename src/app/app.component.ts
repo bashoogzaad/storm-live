@@ -18,7 +18,6 @@ export class MyApp {
     timer: TimerProvider
   ) {
     
-      
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -26,8 +25,6 @@ export class MyApp {
       timer.start();
       
     });
-    
-    
     
   }
 }
